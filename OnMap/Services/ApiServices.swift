@@ -16,19 +16,28 @@ class ApiServices{
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error  in
             if error != nil {
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
             }
             
             do {
                 if isRange{
-                    let range = 5..<data!.count
-                    let newData = data!.subdata(in: range)
+                    let range = 5..<data.count
+                    let newData = data.subdata(in: range)
                     let responseObject = try JSONDecoder().decode(ResponseType.self, from: newData)
                     DispatchQueue.main.async {
                         completion(responseObject, nil)
                     }
                 }else{
-                    let responseObject = try JSONDecoder().decode(ResponseType.self, from: data!)
+                    let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
                     DispatchQueue.main.async {
                         completion(responseObject, nil)
                     }
@@ -58,18 +67,24 @@ class ApiServices{
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if error != nil {
                 completion(nil, error)
+                return
             }
-            
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
             do {
                 if (isRange){
-                    let range = 5..<data!.count
-                    let newData = data!.subdata(in: range)
+                    let range = 5..<data.count
+                    let newData = data.subdata(in: range)
                     let responseObject = try JSONDecoder().decode(ResponseType.self, from: newData)
                     DispatchQueue.main.async {
                         completion(responseObject, nil)
                     }
                 }else{
-                    let responseObject = try JSONDecoder().decode(ResponseType.self, from: data!)
+                    let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
                     DispatchQueue.main.async {
                         completion(responseObject, nil)
                     }

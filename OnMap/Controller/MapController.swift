@@ -32,6 +32,15 @@ class MapController: UIViewController, MKMapViewDelegate{
         self.activityIndicator.startAnimating()
         
         clientServices.getStudentLocations(){ locations,error in
+            if let error {
+                // Handle the case where the device is offline
+                DispatchQueue.main.async {
+                    self.showAlert(message: error.localizedDescription, title: "Error")
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                }
+                return
+            }
             self.mapView.removeAnnotations(self.annotations)
             self.annotations.removeAll()
             for dictionary in locations ?? [] {
@@ -51,6 +60,18 @@ class MapController: UIViewController, MKMapViewDelegate{
                 self.mapView.addAnnotations(self.annotations)
                 self.activityIndicator.stopAnimating()
                 self.activityIndicator.isHidden = true
+            }
+        }
+    }
+    @IBAction func logout(_ sender: Any) {
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.startAnimating()
+        
+        clientServices.logout {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = false
             }
         }
     }

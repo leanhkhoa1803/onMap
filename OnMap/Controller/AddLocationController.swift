@@ -13,6 +13,7 @@ class AddLocationController : UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var textFieldLocation: UITextField!
     @IBOutlet weak var findButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var auth = AuthModel(key: "", firstName: "", lastName: "", objectId: "")
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -21,6 +22,7 @@ class AddLocationController : UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         findButton.isEnabled = false;
+        activityIndicator.isHidden = true
         configTextField()
         auth = initAppDelegate()
     }
@@ -31,6 +33,8 @@ class AddLocationController : UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func findLocation(_ sender: Any) {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         CLGeocoder().geocodeAddressString(textFieldLocation.text!) { (newMarker, error) in
             if let error = error {
                 self.showAlert(message: error.localizedDescription, title: "Location Not Found")
@@ -48,6 +52,8 @@ class AddLocationController : UIViewController, UITextFieldDelegate{
                 }
             }
         }
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
     }
     
     private func loadNewLocation() {

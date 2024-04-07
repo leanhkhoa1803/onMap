@@ -33,6 +33,19 @@ struct StudentModel: Codable {
     }
 }
 
+class StudentsData: NSObject {
+    
+    var students = [StudentModel]()
+    
+    class func sharedInstance() -> StudentsData {
+        struct Singleton {
+            static var sharedInstance = StudentsData()
+        }
+        return Singleton.sharedInstance
+    }
+    
+}
+
 struct StudentsLocation: Codable {
     let results: [StudentModel]
 }

@@ -133,22 +133,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                 <items>
                                     <navigationItem title="On The Map" id="fpW-hh-Mhe">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="7S3-TD-GoU">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cIX-ZR-UJM">
-                                                <rect key="frame" x="16" y="1.6666666666666679" width="87" height="40.666666666666657"/>
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="tI2-9q-rMY">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="HTB-X3-rQn">
+                                                <rect key="frame" x="16" y="3" width="87" height="38.333333333333336"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="location"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
                                                 <connections>
-                                                    <action selector="addLatLongLocation:" destination="Svr-iV-xrv" eventType="touchUpInside" id="6O3-Rz-uFl"/>
+                                                    <action selector="logout:" destination="Svr-iV-xrv" eventType="touchUpInside" id="YTu-wh-xxR"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="U9E-oe-jLP">
-                                            <connections>
-                                                <action selector="refreshList:" destination="Svr-iV-xrv" id="npG-4D-Zp8"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem style="plain" systemItem="refresh" id="U9E-oe-jLP">
+                                                <connections>
+                                                    <action selector="refreshList:" destination="Svr-iV-xrv" id="npG-4D-Zp8"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Item" style="plain" id="7S3-TD-GoU">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cIX-ZR-UJM">
+                                                    <rect key="frame" x="248" y="1.6666666666666679" width="87" height="40.666666666666657"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="location"/>
+                                                    <connections>
+                                                        <action selector="addLatLongLocation:" destination="Svr-iV-xrv" eventType="touchUpInside" id="6O3-Rz-uFl"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -251,22 +264,35 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                                 <items>
                                     <navigationItem title="On The Map" id="qrX-yY-phi">
-                                        <barButtonItem key="leftBarButtonItem" style="plain" id="1yZ-Il-Fy3">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BhI-61-rWS">
-                                                <rect key="frame" x="16" y="1.6666666666666679" width="87" height="40.666666666666657"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" style="plain" id="JcL-b9-oT8">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="P3Q-Zg-2lI">
+                                                <rect key="frame" x="16" y="3" width="87" height="38.333333333333336"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" image="location"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
                                                 <connections>
-                                                    <action selector="addLatLongLocation:" destination="q4m-Jf-hix" eventType="touchUpInside" id="eOX-YI-JR2"/>
+                                                    <action selector="logout:" destination="q4m-Jf-hix" eventType="touchUpInside" id="vND-Zj-kYD"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="refresh" id="1uO-uQ-p19">
-                                            <connections>
-                                                <action selector="refreshMap:" destination="q4m-Jf-hix" id="2je-af-tPa"/>
-                                            </connections>
-                                        </barButtonItem>
+                                        <rightBarButtonItems>
+                                            <barButtonItem style="plain" systemItem="refresh" id="1uO-uQ-p19">
+                                                <connections>
+                                                    <action selector="refreshMap:" destination="q4m-Jf-hix" id="2je-af-tPa"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem style="plain" id="1yZ-Il-Fy3">
+                                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BhI-61-rWS">
+                                                    <rect key="frame" x="248" y="1.6666666666666679" width="87" height="40.666666666666657"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="location"/>
+                                                    <connections>
+                                                        <action selector="addLatLongLocation:" destination="q4m-Jf-hix" eventType="touchUpInside" id="eOX-YI-JR2"/>
+                                                    </connections>
+                                                </button>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -365,6 +391,10 @@
                                     <action selector="findLocation:" destination="Xzm-bD-SFh" eventType="touchUpInside" id="2OY-w4-XQn"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="QHH-d6-U6n">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                                <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QDJ-Ct-MVW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -376,6 +406,7 @@
                             <constraint firstItem="2O5-zL-R2A" firstAttribute="leading" secondItem="Xxn-F9-mai" secondAttribute="leading" id="LI3-qO-zQl"/>
                             <constraint firstItem="B05-ho-Jhs" firstAttribute="top" secondItem="kA1-x5-tpf" secondAttribute="bottom" constant="15" id="O0a-82-nAA"/>
                             <constraint firstItem="QDJ-Ct-MVW" firstAttribute="trailing" secondItem="1WI-4I-9mn" secondAttribute="trailing" id="OsU-zK-aDf"/>
+                            <constraint firstItem="QHH-d6-U6n" firstAttribute="centerY" secondItem="Xxn-F9-mai" secondAttribute="centerY" id="PrX-4s-C6D"/>
                             <constraint firstItem="2O5-zL-R2A" firstAttribute="leading" secondItem="Xxn-F9-mai" secondAttribute="leading" id="ZHo-fe-ysj"/>
                             <constraint firstItem="1WI-4I-9mn" firstAttribute="leading" secondItem="QDJ-Ct-MVW" secondAttribute="leading" id="dqW-iP-GwR"/>
                             <constraint firstItem="kA1-x5-tpf" firstAttribute="centerX" secondItem="Xxn-F9-mai" secondAttribute="centerX" id="eMg-RG-DmL"/>
@@ -386,10 +417,12 @@
                             <constraint firstItem="SOT-m8-yTk" firstAttribute="centerX" secondItem="Xxn-F9-mai" secondAttribute="centerX" id="tPZ-3Z-z6F"/>
                             <constraint firstItem="1WI-4I-9mn" firstAttribute="centerX" secondItem="Xxn-F9-mai" secondAttribute="centerX" id="wPh-wG-uSv"/>
                             <constraint firstItem="cgf-yP-80A" firstAttribute="centerX" secondItem="Xxn-F9-mai" secondAttribute="centerX" id="ykl-ZE-zRL"/>
+                            <constraint firstItem="QHH-d6-U6n" firstAttribute="centerX" secondItem="Xxn-F9-mai" secondAttribute="centerX" id="zwg-mS-VzP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YlA-ge-kmE"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="QHH-d6-U6n" id="a6P-af-Mcd"/>
                         <outlet property="findButton" destination="SOT-m8-yTk" id="Hyh-Ff-jC1"/>
                         <outlet property="textFieldLocation" destination="1WI-4I-9mn" id="DNF-bR-QVk"/>
                         <segue destination="Vqe-k1-4Vu" kind="presentation" identifier="ShowAddLink" modalPresentationStyle="fullScreen" id="qxI-ow-HFR"/>
@@ -493,8 +526,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Q88-ed-6aQ"/>
-        <segue reference="fMv-JW-EdO"/>
+        <segue reference="IUH-mP-nY5"/>
+        <segue reference="JXR-i5-uyB"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
@@ -508,7 +541,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

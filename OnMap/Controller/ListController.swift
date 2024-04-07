@@ -11,7 +11,7 @@ import UIKit
 class ListController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
-    var students = [StudentModel]()
+    var students = StudentsData.sharedInstance().students
     let clientServices = ClientServices();
     
     override func viewDidLoad() {
@@ -21,6 +21,13 @@ class ListController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     func getStudentsList() {
         clientServices.getStudentLocations() {students, error in
+            if let error {
+                // Handle the case where the device is offline
+                DispatchQueue.main.async {
+                    self.showAlert(message: error.localizedDescription, title: "Error")
+                }
+                return
+            }
             self.students = students ?? []
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -31,6 +38,13 @@ class ListController: UIViewController, UITableViewDataSource, UITableViewDelega
         addLocation()
     }
     
+    @IBAction func logout(_ sender: Any) {
+        clientServices.logout {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     @IBAction func refreshList(_ sender: UIBarButtonItem) {
         getStudentsList()
     }

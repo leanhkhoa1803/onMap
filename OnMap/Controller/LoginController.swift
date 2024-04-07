@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginController: UIViewController {
-
+    
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -35,8 +35,8 @@ class LoginController: UIViewController {
             }
         }
     }
-
-
+    
+    
     @IBAction func login(_ sender: Any) {
         isLoggingIn(true)
         clientServices.login(email: self.emailText.text ?? "", password: self.passwordText.text ?? "", completion: handleLoginResponse(success:error:))
@@ -53,7 +53,16 @@ class LoginController: UIViewController {
                 self.performSegue(withIdentifier: "tabBarView", sender: nil)
             }
         } else {
-            showAlert(message: "Please enter valid credentials.", title: "Login Error")
+            if let error = error as? URLError, error.code == .notConnectedToInternet {
+                // Handle the case where the device is offline
+                DispatchQueue.main.async {
+                    self.showAlert(message: "The Internet connection is offline, please try again later.", title: "Login Error")
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                self.showAlert(message: "The credentials were incorrect, please check your email or/and your password.", title: "Login Error")
+            }
         }
     }
     

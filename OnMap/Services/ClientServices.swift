@@ -31,7 +31,7 @@ class ClientServices : UIViewController{
                 
                 completion(true, nil)
             } else {
-                completion(false, nil)
+                completion(false, error)
             }
         }
     }
@@ -73,5 +73,29 @@ class ClientServices : UIViewController{
         }
     }
     
-    
+    func logout(completion: @escaping () -> Void) {
+        var request = URLRequest(url: Endpoints.udacityLogin.url)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if error != nil {
+                print("Error logout.")
+                return
+            }
+            let range = 5..<data!.count
+            let newData = data?.subdata(in: range)
+            print(String(data: newData!, encoding: .utf8)!)
+            self.appDelegate.authModel = AuthModel(sessionId: "", key: "", firstName: "", lastName: "", objectId: "")
+            self.saveDataAppDelegate(data: self.appDelegate.authModel)
+            completion()
+        }
+        task.resume()
+    }
 }
