@@ -34,7 +34,7 @@ class AddLinkController : UIViewController, UITextFieldDelegate{
             clientServices.addStudentLocation(information: studentLocation) { (success, error) in
                 if success {
                     DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "MapViewController", sender: nil)
+                        self.dismiss(animated: true, completion: nil)
                     }
                 } else {
                     DispatchQueue.main.async {

@@ -36,24 +36,28 @@ class AddLocationController : UIViewController, UITextFieldDelegate{
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         CLGeocoder().geocodeAddressString(textFieldLocation.text!) { (newMarker, error) in
-            if let error = error {
-                self.showAlert(message: error.localizedDescription, title: "Location Not Found")
-                print("Location not found.")
-            } else {
-                var location: CLLocation?
+            DispatchQueue.main.async {
+                // Hide and stop the activity indicator
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
                 
-                if let marker = newMarker, marker.count > 0 {
-                    location = marker.first?.location
-                }
-                
-                if let location = location {
-                    self.coordinate = location.coordinate
-                    self.loadNewLocation()
+                if let error = error {
+                    self.showAlert(message: error.localizedDescription, title: "Location Not Found")
+                    print("Location not found.")
+                } else {
+                    var location: CLLocation?
+                    
+                    if let marker = newMarker, marker.count > 0 {
+                        location = marker.first?.location
+                    }
+                    
+                    if let location = location {
+                        self.coordinate = location.coordinate
+                        self.loadNewLocation()
+                    }
                 }
             }
         }
-        activityIndicator.isHidden = true
-        activityIndicator.stopAnimating()
     }
     
     private func loadNewLocation() {
@@ -78,10 +82,10 @@ class AddLocationController : UIViewController, UITextFieldDelegate{
             "latitude": coordinate.latitude,
             "longitude": coordinate.longitude,
             "objectId":auth.objectId
-            ] as [String: AnyObject]
+        ] as [String: AnyObject]
         
         return StudentModel(studentInfo)
-
+        
     }
     
     @IBAction func cancelAddLocation(_ sender: UIBarButtonItem) {
